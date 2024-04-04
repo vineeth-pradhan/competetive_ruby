@@ -13,4 +13,4 @@ def num_jewels_in_stones(j, s)
   count
 end
 
-num_jewels_in_stones('aA', "aAAbbbb")
+p num_jewels_in_stones('aA', "aAAabbbb")
