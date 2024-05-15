@@ -27,17 +27,17 @@ class Solution
   end
 
   def reverse
-    helper(self.head.nextt, self.head.nextt.nextt)
+    helper(self.head.nextt, self.head.nextt.nextt, self.head)
   end
 
   private
 
-  def helper(current, _next)
-    current.nextt = nil if current.data == 1
+  def helper(current, _next, head)
     if(_next.nextt)
       temp = _next.nextt
       _next.nextt = current
-      helper(_next, temp)
+      current.nextt = nil if head.nextt == current
+      helper(_next, temp, head)
     else
       _next.nextt = current
       self.head = _next
