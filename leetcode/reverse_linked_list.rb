@@ -13,16 +13,22 @@ class Solution
   attr_accessor :head
 
   def initialize(array)
-    self.head = Node.new
-    create_nodes(0,array,self.head) unless array.empty?
+    unless(array.empty?)
+      self.head = Node.new
+      create_nodes(0,array,self.head) unless array.empty?
+    end
   end
 
   def print_list
+    return [] unless self.head
+    return self.head.data unless self.head.next
     node = self.head
     helper(node)
   end
 
   def reverse
+    return unless self.head
+    return self.head unless self.head.next
     traverse_helper(self.head, self.head.next, self.head)
   end
 
