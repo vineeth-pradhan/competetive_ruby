@@ -5,19 +5,12 @@ class Solution
     result = ""
     carry = 0
     while(i < max.size)
-      if min.size - i - 1 >= 0
-        sum = (max[max.size - i - 1].to_i + min[min.size - i - 1].to_i + carry) % 2
-        carry = (max[max.size - i - 1].to_i + min[min.size - i - 1].to_i + carry) / 2
-      else
-        sum = (max[max.size - i - 1].to_i + carry) % 2
-        carry = (max[max.size - i - 1].to_i + carry) / 2
-      end
+      sum = (max[max.size - i - 1].to_i + (min.size-i-1 >= 0 ? min[min.size - i - 1].to_i : 0) + carry) % 2
+      carry = (max[max.size - i - 1].to_i + (min.size-i-1 >= 0 ? min[min.size - i - 1].to_i : 0) + carry) / 2
       result.prepend(sum.to_s)
       i += 1
     end
-    if carry != 0
-      result.prepend(carry.to_s)
-    end
+    result.prepend(carry.to_s) if carry != 0
     result
   end
 end
