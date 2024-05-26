@@ -1,17 +1,19 @@
+# https://leetcode.com/problems/add-to-array-form-of-integer
 class Solution
   def add_to_array_form(num, k)
-    convert_to_integer_form(num)+k
+    i=num.size
+    result = []
+    helper(k, num, i, result, 0)
+    result
   end
 
   private
 
-  def convert_to_integer_form(num)
-    i=num.size
-    result=0
-    while(i > 0)
-      result += (num[i-1]*10.pow(num.size-i))
-      i-=1
+  def helper(k, num, i, result, carry)
+    if k > 0 || i > 0 || carry > 0
+      result.unshift((k % 10 + (i-1 >= 0 ? num[i-1] : 0) + carry) % 10)
+      carry = (k % 10 + (i-1 >= 0 ? num[i-1] : 0) + carry) / 10
+      helper(k/10, num, i-1, result, carry)
     end
-    result
   end
 end
