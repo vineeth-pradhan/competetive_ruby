@@ -1,3 +1,4 @@
+# https://leetcode.com/problems/add-binary/
 class Solution
   def add_binary(a, b)
     a.size >= b.size ? (max = a; min = b) : (max = b; min = a)
